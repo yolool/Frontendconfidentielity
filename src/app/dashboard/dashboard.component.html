@@ -1,0 +1,82 @@
+<div class="dash-main" >
+
+   
+    @if (personnel["Department"]){
+       <h1 class="bien">  Bienvenue {{personnel["Name"]}}</h1>
+    }
+    @if (personnel["Department"] !== 'LABO') {
+   <div class="collapse-div" >
+    <div class="expend">
+        <h3 class="name">Engagement de confidentialité</h3>
+        @if (showexpand) {
+        <button class="collapse-btn" (click)="collapse()">
+           <img  class="img-arrow" src="../../assets/img/icons8-collapse-arrow-100.png" >
+           </button>
+        }
+         @if (showcollapse) {
+        <button class="collapse-btn" (click)="extand()" >   
+             <img  class="img-arrow" src="../../assets/img/icons8-expand-arrow-100.png" >
+           
+        </button>
+    }
+    </div>
+    @if(showexpand){
+    <div class="collapse">
+       <h4 class="statut">Statut: </h4>
+       @if(!sign){
+       <h4 class="nosign"> En attente de signature </h4>
+       }
+       @if(sign){
+       <h4 class="sign">Document déjà signée</h4>
+       }
+        @if(sign == false){
+             
+              <div class="signeture"><a routerLink="/Engagment"><Button class="gosign">signe</Button></a></div>
+            
+            
+       
+        }
+    </div>}
+   </div>
+   }
+
+
+       @if (personnel["Department"] === 'LABO') {
+   <div class="collapse-div" >
+    <div class="expend">
+        <h3 class="name1">Engagement d’impartialité et de confidentialité </h3>
+        @if (showexpand) {
+        <button class="collapse-btn" (click)="collapse()">
+           <img  class="img-arrow" src="../../assets/img/icons8-collapse-arrow-100.png" >
+           </button>
+        }
+         @if (showcollapse) {
+        <button class="collapse-btn" (click)="extand()" >   
+             <img  class="img-arrow" src="../../assets/img/icons8-expand-arrow-100.png" >
+           
+        </button>
+    }
+    </div>
+    @if(showexpand){
+    <div class="collapse">
+       <h4 class="statut">Statut: </h4>
+       @if(!sign){
+       <h4 class="nosign"> En attente de signature </h4>
+       }
+       @if(sign){
+       <h4 class="sign">Document déjà signée</h4>
+       }
+        @if(sign == false){
+             @if (personnel["Department"] === 'LABO') {
+              <div class="signeture"><a routerLink="/EngagementImp"><Button class="gosign">signe</Button></a></div>
+            } 
+            
+       
+        }
+    </div>}
+   </div>
+   }
+      
+</div>
+
+

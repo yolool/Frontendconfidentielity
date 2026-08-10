@@ -1,0 +1,10 @@
+<div class="header-main" >
+   <div class="logo">
+     <a routerLink="/"><img src="/assets/img/image.png" alt="TE"></a>
+   </div>
+    
+   @if (login()) {
+   <div class="logout" >
+    <span><img id="signout" src="/assets/img/logout.png" (click)="Logout()"></span>
+   </div> }
+</div>

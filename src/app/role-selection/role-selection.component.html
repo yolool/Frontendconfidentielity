@@ -1,0 +1,41 @@
+<div class="role-main">
+
+  @if(this.statut === 'signed' ){
+  <div class="success">
+     <h5>You successfully signed the document</h5>  
+  </div>}
+
+<h1>Choisissez votre profil</h1>
+
+<form [formGroup]="radioGroupe" class="form-main" (submit)="OnSubmit()">
+    <div class="radio-row">
+     <input type="radio" id="role-personel" name="role" value="PersonelTE"  formControlName="role" (change)="verifierTE()">
+     <label for="role-personel"><h2>Personnel TE</h2></label>
+    </div>
+      
+     @if (showoption) {
+        <div class="form-sub">
+      <div class="radio-row">
+        <input type="radio" id="role-labo" name="role" value="PersonelLaboTE" formControlName="role">
+        <label for="role-labo"><h2>Personnel laboratoire TE</h2></label>
+      </div>
+      <div class="radio-row">
+        <input type="radio" id="role-other" name="role" value="AutrePersonelTE" formControlName="role">
+        <label for="role-other"><h2>Autre Personnel TE</h2></label>
+    </div></div>
+}
+    
+    <div class="radio-row">
+        <input type="radio" id="role-extern" name="role" value="PersonelExtern" formControlName="role" (change)="verifierTE()">
+        <label for="role-extern"><h2>Personnel Externe</h2></label>
+    </div>
+
+     <button type="submit" class="next">
+      <span class="circle" aria-hidden="true">
+      <span class="icon arrow"></span>
+      </span>
+      <span class="button-text">Next</span>
+      </button>
+</form>
+
+</div>

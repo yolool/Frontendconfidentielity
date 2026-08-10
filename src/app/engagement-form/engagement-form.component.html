@@ -1,0 +1,200 @@
+<html>
+<form [formGroup]="form">
+
+    @if (this.type === 'guest') {
+        <div class="h1"><h1>Signez le document ci-dessous</h1></div>
+    }
+
+    @if (errorMessage()) {
+        <div class="error-banner">
+            <span class="error-icon"></span>
+            {{ errorMessage() }}
+        </div>
+    }
+
+    @if (successMessage()) {
+        <div class="success-banner">
+            <span class="success-icon"></span>
+            {{ successMessage() }}
+        </div>
+    }
+
+<div id="pdfContent" class="page">
+
+    <table class="header-table">
+        <tr>
+            <td class="logo-cell" rowspan="2">
+                <img src="../../assets/img/image.png" alt="">
+            </td>
+
+            <td class="doc-number">
+                FOR_EMEA_MA_TA_LA_003_03
+            </td>
+
+            <td class="small-title">
+                Revision
+            </td>
+
+            <td class="small-value">
+                04
+            </td>
+        </tr>
+
+        <tr>
+            <td class="title">
+                Engagement de confidentialité
+            </td>
+
+            <td class="small-title">
+                Date
+            </td>
+
+            <td class="small-value">
+                22/10/2024
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="4" class="validation">
+                The validation of this form is done via system PDM Link
+            </td>
+        </tr>
+    </table>
+
+
+    <div class="content">
+
+        <p>
+            Je, soussigné(e)
+
+            @if (!isCapturing) {
+                <input required type="text" formControlName="name">
+                @if(form.get('name')?.invalid && form.get('name')?.touched){
+                    <small class="error">*champ obligatoire.</small>
+                }
+            } @else {
+                <span class="pdf-value">{{ form.get('name')?.value }}</span>
+            }
+
+            en qualité <span> de</span>
+
+            @if (!isCapturing) {
+                <input required type="text" formControlName="role">
+                @if(form.get('role')?.invalid && form.get('role')?.touched){
+                    <small class="error">*champ est obligatoire.</small>
+                }
+            } @else {
+                <span class="pdf-value">{{ form.get('role')?.value }}</span>
+            }
+        </p>
+        
+
+        <p>
+            chez
+
+            @if (!isCapturing) {
+                <input required type="text" formControlName="company">
+                @if(form.get('company')?.invalid && form.get('company')?.touched){
+                    <small class="error">*champ est obligatoire.</small>
+                }
+            } @else {
+                <span class="pdf-value">{{ form.get('company')?.value }}</span>
+            }
+            
+            <span> muni(e) de TE ID </span>
+
+            @if (!isCapturing) {
+                <input type="text" style="text-transform: uppercase;"  formControlName="teid" >
+                @if(form.get('teid')?.invalid && form.get('teid')?.touched){
+                    <small class="error">*champ est obligatoire.</small>
+                }
+            } @else {
+                <span class="pdf-value">{{ form.get('teid')?.value }}</span>
+            }
+        </p>
+
+        <p>
+            <span> m'</span>engage à compter de la date de la présente à tenir strictement
+            confidentielles et à ne pas divulguer <span> sous </span> aucune circonstance les
+            informations ou connaissances techniques, commerciales,
+            compilations d'informations, données, plans, notes, designs,
+            dessins, spécifications, formules, prototypes ou savoir-faire,
+            <span>ainsi que</span> les informations relativement liées à cette intervention
+            ou visite obtenues de toute autre personne ou <span>de toute autre manière.</span>
+        </p>
+
+        <p>
+            Cette obligation de confidentialité lie l'intervenant ou le
+            visiteur et son entreprise tant aussi longtemps que TE n'a pas
+            relevé de cette obligation.
+        </p>
+
+        <p>
+            En cas de non-respect de la confidentialité, <span>je m'</span>exposerai à des
+            sanctions disciplinaires et/ou pénales par <span>TE Connectivity,</span>
+            conformément aux législations en vigueur.
+        </p>
+
+    </div>
+    
+    <div class="Lu">
+        <input type="checkbox" name="check" class="inl" formControlName="check" (change)="verfiecheck()">
+        <label class="labL"> Lu et approuvé</label>
+    </div>
+
+
+    <div class="footer">
+
+        <div class="footer-row">
+            Fait à
+
+            @if (!isCapturing) {
+                <input name="city" class="citie" formControlName="city" required>
+                @if(form.get('city')?.invalid && form.get('city')?.touched){
+                    <small class="error">*champ est obligatoire.</small>
+                }
+            } @else {
+                <span class="pdf-value">{{ form.get('city')?.value }}</span>
+            }
+
+            le
+
+            @if (!isCapturing) {
+                <input required type="text" formControlName="date">
+            } @else {
+                <span class="pdf-value">{{ form.get('date')?.value }}</span>
+            }
+        </div>
+
+        <div class="signature">
+            @if(signture){
+                <small class="error">*champ est obligatoire.</small>
+            }
+            <p>Signature (après avoir coché la case "Lu et approuvé") :</p>
+
+            <canvas #signatureCanvas class="signature-pad"></canvas>
+
+            <br>
+            <button class="no-print" type="button" (click)="clearSignature()">
+                Clear
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+</form>
+
+    @if(showbtn){
+    <div class="buttons">
+        <button (click)="generatePdf()" [disabled]="isLoading()">
+            @if (isLoading()) {
+                <span class="spinner"></span> Envoi en cours...
+            } @else {
+                Confirmer l'envoi
+            }
+        </button>
+    </div>
+    }
+</html>

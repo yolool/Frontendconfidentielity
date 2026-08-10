@@ -1,0 +1,548 @@
+/* Core Page Layout */
+form {
+  width: 100%;
+  padding: 24px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+body.pdf-capture-mode .page {
+  width: 210mm !important;
+  max-width: 210mm !important;
+  min-height: 297mm !important;
+  padding: 10mm !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+body.pdf-capture-mode .page .logo-cell img {
+  width: 75px !important;
+  height: auto !important;
+  max-width: none !important;
+}
+
+body.pdf-capture-mode .page input,
+body.pdf-capture-mode .page select {
+  font-size: 14px !important;
+  min-width: 160px !important;
+  border: none !important;
+  border-bottom: 1px dotted #555 !important;
+  background: transparent !important;
+  padding: 2px 4px 8px 4px !important;
+  line-height: 1.2 !important;
+  display: inline-block !important;
+  min-height: 1.4em !important;
+  overflow: hidden !important;
+  position: relative !important;
+  z-index: 1 !important;
+  box-sizing: border-box !important;
+  vertical-align: baseline !important;
+}
+
+body.pdf-capture-mode .page td {
+  font-size: 12px !important;
+  padding: 6px !important;
+}
+
+body.pdf-capture-mode .page .document-body input {
+  min-width: 160px !important;
+  font-size: 14px !important;
+  padding: 2px 4px 8px 4px !important;
+  line-height: 1.2 !important;
+  display: inline-block !important;
+  min-height: 1.4em !important;
+  overflow: hidden !important;
+  position: relative !important;
+  z-index: 1 !important;
+  box-sizing: border-box !important;
+  vertical-align: baseline !important;
+}
+
+body.pdf-capture-mode .page .date-section input {
+  min-width: 130px !important;
+  font-size: 14px !important;
+  padding: 2px 4px 8px 4px !important;
+  line-height: 1.2 !important;
+  display: inline-block !important;
+  min-height: 1.4em !important;
+  overflow: hidden !important;
+  position: relative !important;
+  z-index: 1 !important;
+  box-sizing: border-box !important;
+  vertical-align: baseline !important;
+}
+
+body.pdf-capture-mode .page .title {
+  font-size: 17px !important;
+}
+
+body.pdf-capture-mode .page .h1 h1 {
+  font-size: 1.4rem !important;
+}
+
+body.pdf-capture-mode .page .document-body {
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
+
+body.pdf-capture-mode .page .signature p {
+  font-size: 14px !important;
+}
+
+body.pdf-capture-mode .page .signature-pad {
+  width: 400px !important;
+  height: 150px !important;
+}
+
+.page {
+  width: 210mm;
+  max-width: 100%;
+  min-height: 297mm;
+  margin: 0 auto 24px auto;
+  background: white;
+  padding: 10mm;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.page-break {
+  page-break-after: always;
+}
+
+/* Header Table */
+.header-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.header-table td {
+  border: 1px solid #333;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.logo-cell {
+  width: 90px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.logo-cell img {
+  width: 70px;
+  max-width: 100%;
+  height: auto;
+}
+
+.doc-number {
+  text-align: center;
+  font-weight: bold;
+}
+
+.title {
+  text-align: center;
+  color: #0066A1;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.small-header {
+  width: 60px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.small-value {
+  width: 70px;
+  text-align: center;
+}
+
+.validation {
+  text-align: center;
+  font-size: 10px;
+  color: #666;
+}
+
+/* Content & Typography */
+.document-body {
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.document-body p {
+  margin-bottom: 18px;
+}
+
+.document-body ul {
+  margin-left: 18px;
+  padding-left: 10px;
+}
+
+.document-body li {
+  margin-bottom: 10px;
+}
+
+.continue-list {
+  margin-top: 0;
+}
+
+.penalty-text {
+  margin-top: 25px;
+}
+
+.pdf-value {
+  display: inline-block;
+  border-bottom: 1px dotted #555;
+  min-width: 160px;
+  padding: 0 6px 2px 6px;
+  font-weight: 500;
+  color: #000;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+/* Form Controls */
+input {
+  border: none;
+  border-bottom: 1px dotted #555;
+  background: transparent;
+  font-size: 13px;
+  padding: 2px 4px;
+  min-width: 160px;
+  max-width: 100%;
+  transition: border-color 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 1px solid #0066A1;
+}
+
+.date-section {
+  text-align: right;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+}
+
+.date-section label {
+  font-size: 13px;
+  color: #333;
+}
+
+.date-section input {
+  width: 150px;
+  max-width: 100%;
+}
+
+.signature {
+  margin-top: 16px;
+  text-align: right;
+}
+
+.signature-label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.signature-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.signature-pad {
+  width: 100%;
+  max-width: 400px;
+  height: 150px;
+  border: 1px dashed #ccc;
+  background: white;
+  cursor: crosshair;
+  border-radius: 4px;
+  transition: border-color 0.2s ease;
+}
+
+.signature-pad:hover {
+  border-color: #999;
+}
+
+.signature-pad:active {
+  border-color: #0066A1;
+}
+
+.error {
+  color: #e53935;
+  font-size: 0.75rem;
+  margin-left: 4px;
+  vertical-align: super;
+}
+
+.note {
+  font-size: 11px;
+  margin-top: 20px;
+  color: #006FC0;
+}
+
+.page-number {
+  position: absolute;
+  bottom: 10mm;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: #999;
+}
+
+.actions-wrapper {
+  text-align: center;
+  margin: 25px 0;
+}
+
+button {
+  padding: 10px 24px;
+  background: #0066A1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+button:hover {
+  background: #004d7a;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.btn-clear {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  background: #6c757d;
+  margin-top: 6px;
+}
+
+.btn-clear:hover {
+  background: #5a6268;
+}
+
+.buttons {
+  text-align: center;
+  margin: 12px 0 32px 0;
+}
+
+.Lu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 24px;
+}
+
+.labL {
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+}
+
+span {
+  color: #006FC0;
+}
+
+/* Error Banner */
+.error-banner {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #e53935;
+  color: #b91c1c;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 0 auto 20px auto;
+  max-width: 800px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: shakeIn 0.4s ease;
+}
+
+.error-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Success Banner */
+.success-banner {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid #22c55e;
+  color: #166534;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 0 auto 20px auto;
+  max-width: 800px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeIn 0.4s ease;
+}
+
+.success-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Spinner */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shakeIn {
+  0% { opacity: 0; transform: translateX(-10px); }
+  25% { transform: translateX(5px); }
+  50% { transform: translateX(-3px); }
+  75% { transform: translateX(2px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  form {
+    padding: 16px 8px;
+  }
+
+  .page {
+    padding: 8mm 5mm;
+    border-radius: 2px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .header-table td {
+    font-size: 10px;
+    padding: 4px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .document-body {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .document-body ul {
+    margin-left: 12px;
+    padding-left: 5px;
+  }
+
+  input {
+    min-width: 100px;
+    font-size: 12px;
+  }
+
+  .signature-pad {
+    height: 130px;
+  }
+
+  .buttons {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  form {
+    padding: 12px 4px;
+  }
+
+  .page {
+    padding: 5mm 3mm;
+  }
+
+  .header-table td {
+    font-size: 9px;
+    padding: 3px;
+  }
+
+  .title {
+    font-size: 12px;
+  }
+
+  .document-body {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .document-body ul {
+    margin-left: 8px;
+  }
+
+  input {
+    min-width: 70px;
+    font-size: 11px;
+  }
+
+  .logo-cell {
+    width: 60px;
+  }
+
+  .logo-cell img {
+    width: 45px;
+  }
+
+  .signature-pad {
+    height: 110px;
+  }
+
+  .date-section {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .date-section input {
+    width: 100%;
+  }
+
+  button {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .buttons {
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,198 @@
+.dash-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: calc(100vh - 64px - 50px);
+}
+
+.bien {
+  font-size: 1.6rem;
+  color: #222;
+  font-weight: 600;
+  margin: 0 0 32px 0;
+  text-align: center;
+}
+
+.collapse-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 520px;
+}
+
+.expend {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.expend:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.name, .name1 {
+  font-size: 1.05rem;
+  color: #333;
+  margin: 0;
+  font-weight: 500;
+  flex: 1;
+}
+
+.collapse-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.collapse-btn:hover {
+  transform: scale(1.1);
+}
+
+.img-arrow {
+  width: 32px;
+  height: 32px;
+}
+
+.collapse {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  background: white;
+  border-radius: 0 0 12px 12px;
+  padding: 20px 24px;
+  gap: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  margin-top: -4px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; }
+  to { opacity: 1; max-height: 300px; }
+}
+
+.statut {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.nosign {
+  color: #e53935;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.sign {
+  color: #43a047;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.signeture {
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.gosign {
+  padding: 10px 28px;
+  background-color: #0066A1;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.gosign:hover {
+  background-color: #3DB7E4;
+  transform: translateY(-1px);
+}
+
+.gosign:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dash-main {
+    padding: 28px 16px;
+  }
+
+  .bien {
+    font-size: 1.35rem;
+    margin-bottom: 24px;
+  }
+
+  .expend {
+    padding: 14px 16px;
+    border-radius: 10px;
+  }
+
+  .collapse {
+    padding: 16px 18px;
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dash-main {
+    padding: 20px 12px;
+  }
+
+  .bien {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .expend {
+    padding: 12px 14px;
+    border-radius: 8px;
+  }
+
+  .name, .name1 {
+    font-size: 0.95rem;
+  }
+
+  .collapse {
+    padding: 14px 14px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .img-arrow {
+    width: 28px;
+    height: 28px;
+  }
+
+  .signeture {
+    margin-top: 12px;
+  }
+
+  .gosign {
+    padding: 10px 24px;
+    width: 100%;
+    max-width: 240px;
+  }
+}

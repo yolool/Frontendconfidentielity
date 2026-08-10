@@ -1,0 +1,45 @@
+<div class="body">
+<div class="signup-card">
+    <div class="avatar-container">
+      <svg class="avatar-icon" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="50" fill="#e2e2e2" />
+        <circle cx="50" cy="38" r="18" fill="#acacac" />
+        <path d="M 22 80 C 22 62, 35 55, 50 55 C 65 55, 78 62, 78 80 Z" fill="#acacac" />
+      </svg>
+    </div>
+
+    <form [formGroup]="form" class="signup-form" (submit)="OnSubmit()" >
+      @if (errorMessage()) {
+        <div class="error-banner">
+          <span class="error-icon">⚠</span>
+          {{ errorMessage() }}
+        </div>
+      }
+
+      <div class="form-group">
+        <label for="idPersonnel">ID TE</label>
+        @if(form.get('idPersonnel')?.invalid && form.get('idPersonnel')?.touched){
+            <small class="field-error">*champ obligatoire.</small>}
+        <input type="text"  name="idPersonnel" formControlName="idPersonnel"  required [class.input-error]="errorMessage() !== null">
+      </div>
+       @if (showdep) {
+      <div class="form-group">
+        <label for="dep">Département</label>
+         @if(form.get('dep')?.invalid && form.get('dep')?.touched){
+            <small class="field-error">*champ obligatoire.</small>}
+        <select name="dep" formControlName="dep" [class.input-error]="errorMessage() !== null">
+            @for (item of deps; track $index) {
+            <option value={{item.dep}}>{{item.dep}}</option>}
+        </select>
+      </div>}
+
+      <button type="submit" class="btn-submit" [disabled]="isLoading()">
+        @if (isLoading()) {
+          <span class="spinner"></span> Connexion...
+        } @else {
+          Sign Up
+        }
+      </button>
+    </form>
+  </div>
+  </div>

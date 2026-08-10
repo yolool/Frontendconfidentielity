@@ -1,0 +1,421 @@
+<form [formGroup]="form">
+
+    @if (errorMessage()) {
+        <div class="error-banner">
+            {{ errorMessage() }}
+        </div>
+    }
+
+    @if (successMessage()) {
+        <div class="success-banner">
+            {{ successMessage() }}
+        </div>
+    }
+
+<div id="pdfContent" class="page">
+
+
+    <table class="header-table">
+
+        <tr>
+
+            <td class="logo-cell" rowspan="2">
+
+                <img src="../../assets/img/image.png">
+
+            </td>
+
+            <td class="doc-number">
+
+                FOR_EMEA_MA_TA_LA_003_02
+
+            </td>
+
+            <td class="small-header">
+                Revision
+            </td>
+
+            <td class="small-value">
+                05
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td class="title">
+
+                Engagement d'impartialité et de confidentialité
+
+            </td>
+
+            <td class="small-header">
+
+                Date
+
+            </td>
+
+            <td class="small-value">
+
+                {{date | date:'dd/MM/yyyy'  }}
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td colspan="4" class="validation">
+
+                The validation of this form is done via system PDM Link
+
+            </td>
+
+        </tr>
+
+    </table>
+
+
+    <div class="document-body">
+
+        <p>
+
+            Je soussigné(e),
+
+            @if (!isCapturing) {
+            <input
+                type="text"
+                formControlName="name">
+            @if(form.get('name')?.invalid && form.get('name')?.touched){
+            <small class="error">*champ obligatoire.</small>}
+            } @else {
+            <span class="pdf-value">{{ form.get('name')?.value }}</span>
+            }
+            <span>employé(e) au sein de la société TE Connectivity
+            muni </span>de TE ID :
+            
+
+            @if (!isCapturing) {
+            <input
+                type="text"
+                formControlName="teid">
+             @if(form.get('teid')?.invalid && form.get('teid')?.touched){
+            <small class="error">*champ obligatoire.</small>}
+            } @else {
+            <span class="pdf-value">{{ form.get('teid')?.value }}</span>
+            }
+
+            <span>reconnais l'importance de l'impartialité et de la confidentialité
+            dans les activités du laboratoire</span> et je m'engage à respecter
+            les points cités ci-dessous :
+
+        </p>
+
+        <ul>
+
+            <li>
+
+                À être neutre et objectif dans toutes mes activités
+                professionnelles, <span>en veillant à ne laisser aucune influence
+                externe, commerciale ou personnelle altérer mes décisions
+                ou mes actions.</span>
+
+            </li>
+
+            <li>
+                <span>
+                À ne pas réaliser des activités dans lesquelles j'aurais
+                un intérêt personnel ou en cas de conflits d'intérêts,
+                même résiduels.</span>
+
+            </li>
+
+            <li>
+                <span>
+                À informer toute relation professionnelle ou personnelle
+                avec les demandeurs, les clients ou les prestataires.
+                </span>
+
+            </li>
+
+            <li>
+                <span>
+                À suivre les étapes mentionnées dans le guide de conduite
+                éthique de TE Connectivity en cas de pression ou d'action
+                pouvant compromettre mon impartialité.
+                 </span>
+            </li>
+
+            <li>
+
+                À éviter les pressions externes telles que les intérêts
+                commerciaux ou les relations avec les clients influençant
+                le jugement ou l'intégrité.
+
+            </li>
+
+            <li>
+
+                À prendre les mesures nécessaires pour minimiser les risques
+                d'impartialité induits par les actions du personnel.
+
+            </li>
+
+            <li>
+                <span>
+                La direction du laboratoire s'engage à respecter les
+                conditions de non-discrimination (abolition de favoritisme
+                et de préjudice), garantit et instaure la neutralité,
+                la justice, l'ouverture d'esprit, l'équité et l'équilibre.
+                (*)</span>
+
+            </li>
+
+            <li>
+                <span>
+                La direction du laboratoire s'engage à maintenir
+                l'incorporation de la procédure d'impartialité comme
+                principe directeur de ses activités </span> tout en œuvrant sous
+                les valeurs d'intégrité, d'objectivité, d'excellence,
+                de confidentialité, de sécurité et d'impartialité. <span>(*)</span> 
+
+            </li>
+
+            <li>
+                <span>
+                À ne pas déplacer, reproduire ou utiliser ces informations
+                à des fins personnelles ou commerciales.</span>
+
+            </li>
+
+            <li>
+
+                À ne pas déplacer le matériel ou les biens contenant des
+                informations confidentielles, sauf si cela est nécessaire
+                pour accomplir mes fonctions.
+
+            </li>
+
+            <li>
+
+                À traiter les informations confidentielles avec le plus
+                grand soin et les protéger contre tout accès non autorisé
+                ou toute divulgation.
+
+            </li>
+
+            <li>
+                <span>
+                À informer les clients ou les personnes concernées lorsque
+                la divulgation d'informations confidentielles est requise,
+                sauf si la loi interdit cette notification.
+                </span>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="page-number">
+
+        1
+
+    </div>
+
+</div>
+<div class="page-break"></div>
+
+<div class="page">
+
+
+    <table class="header-table">
+
+        <tr>
+
+            <td class="logo-cell" rowspan="2">
+
+                <img src="../../assets/img/image.png">
+
+            </td>
+
+            <td class="doc-number">
+
+                FOR_EMEA_MA_TA_LA_003_02
+
+            </td>
+
+            <td class="small-header">
+
+                Revision
+
+            </td>
+
+            <td class="small-value">
+
+                05
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td class="title">
+
+                Engagement d'impartialité et de confidentialité
+
+            </td>
+
+            <td class="small-header">
+
+                Date
+
+            </td>
+
+            <td class="small-value">
+                 08/10/2024 
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td colspan="4" class="validation">
+
+                The validation of this form is done via system PDM Link
+
+            </td>
+
+        </tr>
+
+    </table>
+
+
+    <div class="document-body">
+
+        <ul class="continue-list">
+
+            <li>
+                <span>
+                À assurer le partage de toute information obtenue d'une tierce
+                partie aux clients concernés en toute discrétion et en respectant
+                l'anonymat de la source si demandé.</span>
+
+            </li>
+
+            <li>
+                <span>
+                À respecter toutes les lois et réglementations applicables
+                concernant la protection et la divulgation des informations
+                confidentielles ainsi que les dispositions contractuelles
+                convenues avec les clients.</span>
+
+            </li>
+
+            <li>
+
+                <span>Je m'engage que </span> durant la période d'emploi et après résiliation
+                du contrat, il est obligatoire de garder toute information
+                confidentielle et de l'utiliser, y accéder ou la sauvegarder
+                uniquement selon les directives <span>des politiques de la société.</span>
+
+            </li>
+
+        </ul>
+
+        <br>
+
+        <p>
+
+            En cas de non-respect d'une ou de toutes les clauses stipulées
+            dans la procédure d'impartialité et confidentialité
+            N° QMP_EMEA_MA_TA_LA_003, je m'exposerai à des sanctions
+            disciplinaires ou/et pénales par TE Connectivity,
+            conformément aux législations en vigueur.
+
+        </p>
+
+        <br><br>
+        <div class="Lu" >
+          
+            <input type="checkbox" name="check" class="inl" formControlName="check"  (change)="verfiecheck()" >
+            <label class="labL" > Lu et approuvé</label>
+            
+        </div>
+
+        <div class="date-section">
+
+            <label>
+
+                Date :
+
+            </label>
+
+            @if (!isCapturing) {
+            <input
+                type="text"
+                formControlName="date">
+            } @else {
+            <span class="pdf-value">{{ form.get('date')?.value }}</span>
+            }
+
+        </div>
+
+        <br><br><br>
+
+      
+
+          <div class="signature">
+  @if(signture){
+            <small class="error">*champ est obligatoire.</small>}
+         <p>Signature (après avoir coché la case "Lu et approuvé") :</p>
+         
+
+       <canvas #signatureCanvas  class="signature-pad"></canvas>
+
+    <br> <button class="no-print" type="button" (click)="clearSignature()">
+    Clear
+  </button>
+    </div>
+       
+
+       
+
+     
+
+        <p class="note">
+
+           <span> (*) Engagement pour la direction du laboratoire.</span>
+
+        </p>
+
+    </div>
+
+    <div class="page-number">
+
+        2
+
+    </div>
+
+</div>
+
+</form>
+
+@if(showbtn){
+<div class="buttons">
+
+    <button
+        type="button"
+        (click)="generatePdf()"
+        [disabled]="isLoading()">
+
+        @if (isLoading()) {
+            <span class="spinner"></span> Envoi en cours...
+        } @else {
+            Confirmer l'envoi
+        }
+
+    </button>
+
+    
+</div>}

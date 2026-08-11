@@ -29,24 +29,25 @@ pipeline {
             }
         }
         
-        stage('4. SonarQube Analysis') {
-            steps {
-                echo '🔍 Scanning code with SonarQube...'
-                withSonarQubeEnv('sonarqube') {
-                    sh '''
-                        docker run --rm \
-                        --network host \
-                        -v $(pwd):/usr/src \
-                        sonarsource/sonar-scanner-cli:latest \
-                        -Dsonar.projectKey=frontend-confidentiality \
-                        -Dsonar.projectName=Frontend-Confidentiality \
-                        -Dsonar.sources=src \
-                        -Dsonar.host.url=$SONAR_HOST_URL \
-                        -Dsonar.login=$SONAR_AUTH_TOKEN
-                    '''
-                }
-            }
+      stage('4. SonarQube Analysis') {
+    steps {
+        echo '🔍 Scanning code with SonarQube...'
+        withSonarQubeEnv('sonarqube') {
+            sh '''
+                docker run --rm \
+                --network host \
+                -w /usr/src \
+                -v /var/jenkins_home/workspace/Frontend-Pipeline:/usr/src \
+                sonarsource/sonar-scanner-cli:latest \
+                -Dsonar.projectKey=frontend-confidentiality \
+                -Dsonar.projectName=Frontend-Confidentiality \
+                -Dsonar.sources=src \
+                -Dsonar.host.url=$SONAR_HOST_URL \
+                -Dsonar.login=$SONAR_AUTH_TOKEN
+            '''
         }
+    }
+}
         
         stage('5. Docker Build') {
             steps {

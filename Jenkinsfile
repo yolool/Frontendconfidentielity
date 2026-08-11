@@ -28,11 +28,11 @@ pipeline {
                 sh 'npm run build -- --configuration production'
             }
         }
-        
-    stage('4. SonarQube Analysis') {
-    steps {
-        echo '🔍 Scanning code with SonarQube...'
-        withSonarQubeEnv('sonarqube') {
+      
+      stage('4. SonarQube Analysis') {
+          steps {
+             echo '🔍 Scanning code with SonarQube...'
+             withSonarQubeEnv('sonarqube') {
             sh '''
                 docker run --rm \
                 --network host \
@@ -41,7 +41,11 @@ pipeline {
                 sonarsource/sonar-scanner-cli:latest \
                 -Dsonar.projectKey=frontend-confidentiality \
                 -Dsonar.projectName=Frontend-Confidentiality \
-                -Dsonar.sources=. \
+                -Dsonar.sources=src \
+                -Dsonar.exclusions=**/node_modules/**,**/*.spec.ts \
+                -Dsonar.tests=src \
+                -Dsonar.test.inclusions=**/*.spec.ts \
+                -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info \
                 -Dsonar.host.url=$SONAR_HOST_URL \
                 -Dsonar.login=$SONAR_AUTH_TOKEN
             '''

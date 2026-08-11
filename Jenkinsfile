@@ -41,9 +41,9 @@ pipeline {
                 sonarsource/sonar-scanner-cli:latest \
                 -Dsonar.projectKey=frontend-confidentiality \
                 -Dsonar.projectName=Frontend-Confidentiality \
-                -Dsonar.sources=/usr/src \
+                -Dsonar.sources=/src \
                 -Dsonar.exclusions=**/node_modules/**,**/*.spec.ts \
-                -Dsonar.tests=/usr/src \
+                -Dsonar.tests=/src \
                 -Dsonar.test.inclusions=**/*.spec.ts \
                 -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info \
                 -Dsonar.host.url=$SONAR_HOST_URL \

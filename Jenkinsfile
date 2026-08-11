@@ -36,8 +36,8 @@ pipeline {
             sh '''
                 docker run --rm \
                 --network host \
-                -w src \
-                -v $(pwd):src \
+                -w /src \
+                -v $(pwd):/src \
                 sonarsource/sonar-scanner-cli:latest \
                 -Dsonar.projectKey=frontend-confidentiality \
                 -Dsonar.projectName=Frontend-Confidentiality \

@@ -32,6 +32,7 @@ pipeline {
      stage('4. SonarQube Analysis') {
     steps {
         echo '🔍 Scanning code with SonarQube...'
+        sh 'docker run --rm -v $(pwd):/src -w /src sonarsource/sonar-scanner-cli:latest ls -la /src'
         withSonarQubeEnv('sonarqube') {
             sh '''
                 docker run --rm \

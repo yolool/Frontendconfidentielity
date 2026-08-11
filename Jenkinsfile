@@ -42,7 +42,7 @@ pipeline {
                         -Dsonar.projectName=Frontend-Confidentiality \
                         -Dsonar.sources=src \
                         -Dsonar.host.url=$SONAR_HOST_URL \
-                        -Dsonar.token=$SONAR_AUTH_TOKEN
+                        -Dsonar.login=$SONAR_AUTH_TOKEN
                     '''
                 }
             }

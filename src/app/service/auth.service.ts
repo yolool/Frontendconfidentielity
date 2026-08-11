@@ -14,7 +14,7 @@ export interface LoginDTO {
 })
 export class AuthService {
   route = inject(Router)
-  private apiUrl = 'http://localhost:8080/api/v1/auth';
+  private apiUrl = 'http://57.174.232.113:32290/api/v1/auth';
   
   isAuthenticated = signal<boolean>(false);
 
@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post(`http://localhost:8080/logout`, {}).pipe(
+    return this.http.post(`http://57.174.232.113:32290/logout`, {}).pipe(
       tap(() => {
         this.isAuthenticated.set(false);
          this.route.navigate(['/'])

@@ -18,7 +18,7 @@ export interface PersonnelDto{
   providedIn: 'root'
 })
 export class PersonnelService {
-   apiUrl =   "http://localhost:8080/api/v1/Personnel"
+   apiUrl =   "http://57.174.232.113:32290/api/v1/Personnel"
   constructor(private http:HttpClient) {}
 
   getdeps():Observable<DepartementDto[]>{

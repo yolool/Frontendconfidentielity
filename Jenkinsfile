@@ -12,7 +12,7 @@ pipeline {
         stage('1. Checkout Code') {
             steps {
                 echo '📥 Pulling code from GitHub...'
-                git branch: 'main', url: 'https://github.com/yolool/Frontendconfidentielity.git'
+                git branch: 'master', url: 'https://github.com/yolool/Frontendconfidentielity.git'
             }
         }
         

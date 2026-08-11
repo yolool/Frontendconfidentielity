@@ -29,22 +29,16 @@ pipeline {
             }
         }
       
-     stage('4. SonarQube Analysis') {
+   stage('4. SonarQube Analysis') {
     steps {
         echo '🔍 Scanning code with SonarQube...'
-        sh 'docker run --rm -v $(pwd):/src -w /src sonarsource/sonar-scanner-cli:latest ls -la /src'
         withSonarQubeEnv('sonarqube') {
             sh '''
-                docker run --rm \
-                --network host \
-                -w /src \
-                -v $(pwd):/src \
-                sonarsource/sonar-scanner-cli:latest \
+                npx --yes sonar-scanner \
                 -Dsonar.projectKey=frontend-confidentiality \
                 -Dsonar.projectName=Frontend-Confidentiality \
-                -Dsonar.sources=. \
+                -Dsonar.sources=src \
                 -Dsonar.exclusions=**/node_modules/**,**/*.spec.ts \
-                -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info \
                 -Dsonar.host.url=$SONAR_HOST_URL \
                 -Dsonar.login=$SONAR_AUTH_TOKEN
             '''

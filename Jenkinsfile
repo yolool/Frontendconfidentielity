@@ -29,15 +29,15 @@ pipeline {
             }
         }
         
-      stage('4. SonarQube Analysis') {
+     stage('4. SonarQube Analysis') {
     steps {
         echo '🔍 Scanning code with SonarQube...'
         withSonarQubeEnv('sonarqube') {
             sh '''
                 docker run --rm \
                 --network host \
-                -w /usr/src \
-                -v /var/jenkins_home/workspace/Frontend-Pipeline:/usr/src \
+                -w /workspace \
+                -v $(pwd):/workspace \
                 sonarsource/sonar-scanner-cli:latest \
                 -Dsonar.projectKey=frontend-confidentiality \
                 -Dsonar.projectName=Frontend-Confidentiality \

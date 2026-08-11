@@ -29,19 +29,19 @@ pipeline {
             }
         }
         
-     stage('4. SonarQube Analysis') {
+    stage('4. SonarQube Analysis') {
     steps {
         echo '🔍 Scanning code with SonarQube...'
         withSonarQubeEnv('sonarqube') {
             sh '''
                 docker run --rm \
                 --network host \
-                -w /workspace \
-                -v $(pwd):/workspace \
+                -w /usr/src \
+                -v $(pwd):/usr/src \
                 sonarsource/sonar-scanner-cli:latest \
                 -Dsonar.projectKey=frontend-confidentiality \
                 -Dsonar.projectName=Frontend-Confidentiality \
-                -Dsonar.sources=src \
+                -Dsonar.sources=. \
                 -Dsonar.host.url=$SONAR_HOST_URL \
                 -Dsonar.login=$SONAR_AUTH_TOKEN
             '''

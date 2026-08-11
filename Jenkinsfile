@@ -2,6 +2,7 @@ pipeline {
     agent any
     
     environment {
+        // ⚠️ REPLACE 'adam020' with YOUR Docker Hub username!
         DOCKER_IMAGE = 'adam020/frontend-confidentiality'
         DOCKER_TAG   = "${BUILD_NUMBER}"
     }
@@ -11,7 +12,7 @@ pipeline {
         stage('1. Checkout Code') {
             steps {
                 echo '📥 Pulling code from GitHub...'
-                git branch: 'master', url: 'https://github.com/yolool/Frontendconfidentielity.git'
+                git branch: 'main', url: 'https://github.com/yolool/Frontendconfidentielity.git'
             }
         }
         
@@ -28,13 +29,13 @@ pipeline {
                 sh 'npm run build -- --configuration production'
             }
         }
-      
-   stage('4. SonarQube Analysis') {
+        
+        stage('4. SonarQube Analysis') {
     steps {
         echo '🔍 Scanning code with SonarQube...'
         withSonarQubeEnv('sonarqube') {
             sh '''
-                npx --yes sonar-scanner \
+                npx sonar-scanner \
                 -Dsonar.projectKey=frontend-confidentiality \
                 -Dsonar.projectName=Frontend-Confidentiality \
                 -Dsonar.sources=src \

@@ -2,9 +2,9 @@ pipeline {
     agent any
     
     environment {
-        // ⚠️ REPLACE 'adam020' with YOUR Docker Hub username!
         DOCKER_IMAGE = 'adam020/frontend-confidentiality'
         DOCKER_TAG   = "${BUILD_NUMBER}"
+        TELEGRAM_CHAT_ID = '-1003962149031'
     }
     
     stages {
@@ -31,21 +31,21 @@ pipeline {
         }
         
         stage('4. SonarQube Analysis') {
-    steps {
-        echo '🔍 Scanning code with SonarQube...'
-        withSonarQubeEnv('sonarqube') {
-            sh '''
-                npx sonar-scanner \
-                -Dsonar.projectKey=frontend-confidentiality \
-                -Dsonar.projectName=Frontend-Confidentiality \
-                -Dsonar.sources=src \
-                -Dsonar.exclusions=**/node_modules/**,**/*.spec.ts \
-                -Dsonar.host.url=$SONAR_HOST_URL \
-                -Dsonar.login=$SONAR_AUTH_TOKEN
-            '''
+            steps {
+                echo '🔍 Scanning code with SonarQube...'
+                withSonarQubeEnv('sonarqube') {
+                    sh '''
+                        npx sonar-scanner \
+                        -Dsonar.projectKey=frontend-confidentiality \
+                        -Dsonar.projectName=Frontend-Confidentiality \
+                        -Dsonar.sources=src \
+                        -Dsonar.exclusions=**/node_modules/**,**/*.spec.ts \
+                        -Dsonar.host.url=$SONAR_HOST_URL \
+                        -Dsonar.token=$SONAR_AUTH_TOKEN
+                    '''
+                }
+            }
         }
-    }
-}
         
         stage('5. Docker Build') {
             steps {
@@ -74,14 +74,25 @@ pipeline {
     
     post {
         always {
-            echo '🧹 Cleaning up workspace...'
             cleanWs()
         }
         success {
-            echo '✅ Frontend pipeline completed successfully!'
+            withCredentials([string(credentialsId: 'telegram-token', variable: 'TG_TOKEN')]) {
+                sh '''
+                    curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+                      --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+                      --data-urlencode "text=✅ FRONTEND build #${BUILD_NUMBER} SUCCESS"
+                '''
+            }
         }
         failure {
-            echo '❌ Frontend pipeline failed! Check the logs.'
+            withCredentials([string(credentialsId: 'telegram-token', variable: 'TG_TOKEN')]) {
+                sh '''
+                    curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+                      --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+                      --data-urlencode "text=❌ FRONTEND build #${BUILD_NUMBER} FAILED — check Jenkins!"
+                '''
+            }
         }
     }
 }

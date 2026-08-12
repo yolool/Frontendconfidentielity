@@ -50,8 +50,8 @@ pipeline {
         stage('5. Docker Build') {
             steps {
                 echo '🐳 Building Docker image...'
-                sh "sudo docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
-                sh "sudo docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
+                sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                sh "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
             }
         }
         
@@ -64,9 +64,9 @@ pipeline {
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
                     sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                    sh "sudo docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
-                    sh "sudo docker push ${DOCKER_IMAGE}:latest"
-                    sh 'sudo docker logout'
+                    sh "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
+                    sh "docker push ${DOCKER_IMAGE}:latest"
+                    sh 'docker logout'
                 }
             }
         }

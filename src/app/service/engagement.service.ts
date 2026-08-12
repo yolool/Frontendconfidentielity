@@ -17,7 +17,7 @@ export interface EngagementDto{
 export class EngagementService {
    
 
-  private apiUrl = 'http://57.174.232.113:32290/api/v1/engagement';
+  private apiUrl = 'http://172.160.226.189:32290/api/v1/engagement';
   constructor(private http:HttpClient) {}
 
   uploadEngagement(file:File ,subject:string,idPersonnel:string ): Observable<EngagementDto>{
